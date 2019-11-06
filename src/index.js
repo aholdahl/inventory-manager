@@ -12,7 +12,6 @@ import rootReducer from './redux/reducers';
 import rootSaga from './redux/sagas';
 
 import createSagaMiddleware from 'redux-saga';
-import { takeEvery } from 'redux-saga/effects';
 
 const sagaMiddleware = createSagaMiddleware();
 

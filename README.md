@@ -1,68 +1,53 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Inventory Management Application
 
-## Available Scripts
+An online seller fulfills customer orders placed on the seller’s website, and maintains stock of multiple products in their warehouse. The online seller uses inventory management software to accomplish these needs.
 
-In the project directory, you can run:
+The warehouse is divided into multiple bins (shelves or areas of the warehouse) to hold inventory. A bin can contain multiple different products, and a product can have inventory in multiple different bins.
 
-### `npm start`
+Your task is to develop a web application, using your language and frameworks of choice, that will allow warehouse staff to view, create, edit, and delete: Products, Bins, Inventory Levels, and Orders. Data should be stored in a SQL database of your choice.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Your project delivery should include all source code, and a copy of your database files, as either an .MDF file, a. .BAK file, or one or more .SQL files.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+While we encourage using C# and Microsoft SQL Server, please use whatever language and SQL database you are most comfortable with.
 
-### `npm test`
+![Working Image](/ERD.png)
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# List of Technologies
 
-### `npm run build`
+This application was built using the following technologies:
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+React.js
+Redux
+Redux-Sagas
+Axios
+Node.js
+PostgreSQL
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+MacOS Mojave
+Visual Studio Code
+Node Package Manager
+HomeBrew
+Postico
+Google Chrome
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# System Prerequisites
 
-### `npm run eject`
+This project was developed using the above technologies. If you are attempting to use different programs, you may need to download additional dependencies and modify the code accordingly.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Installation
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Click Clone or Download, then click Download ZIP Unzip the file.
+Create the database and table(s) in Postico using the SQL provided in database.sql.
+In Terminal, run the following commands:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    npm install
+    npm build
+    npm start
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+# Table of Contents
+# Documentation on how a user would experience the completed features of the app (with screenshots)
+# Debugging/Testing Instructions and list of known issues
+# Next version wishlist
+# Deployment Information
+# Author Attribution
+# Achnowledgements
