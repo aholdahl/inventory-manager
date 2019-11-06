@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class SampleComponent extends Component {
+class Inventory extends Component {
     render() {
         return (
             <div>
-                <h2>Hello from SampleComponent!</h2>
+                <h2>Hello from Inventory!</h2>
             </div>
         )
     }
 }
 
-export default SampleComponent;
+export default Inventory;

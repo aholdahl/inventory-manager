@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import sampleReducer from './sampleReducer.js';
+import inventoryReducer from './inventoryReducer.js';
 
 const rootReducer = combineReducers({
-    sampleReducer,
+    inventoryReducer,
 });
 
 export default rootReducer;
