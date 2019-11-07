@@ -39,9 +39,9 @@ router.put('/', (req, res) => {
 })
 
 //Deletes product info then sends status code to productSaga
-router.delete('/', (req, res) => {
-    let queryText = `DELETE FROM "product" WHERE "product_id" = $1`
-    pool.query(queryText, [req.body.productId])
+router.delete('/:productId', (req, res) => {
+    let queryText = `DELETE FROM "product" WHERE "product_id" = $1;`
+    pool.query(queryText, [req.params.productId])
         .then((result) => {
             res.sendStatus(200);
         }).catch((error) => {

@@ -21,7 +21,7 @@ class ProductItem extends Component {
     }
 
     //In Edit mode, captures any changes to the input values and stores in local state
-    handleChange = (event, property) => {
+    handleProductChange = (event, property) => {
         this.setState({
             ...this.state,
             [property]: event.target.value
@@ -31,11 +31,11 @@ class ProductItem extends Component {
     //When Save button is clicked, confirmation dialog will appear
     //Upon confirmation, local state is sent to productSaga to update the database
     //State returns to editMode: false
-    saveChanges = () => {
+    saveProductChanges = () => {
         Swal.fire({
             title: 'Please confirm',
             text: 'Are you sure you want to update this product?',
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Save Changes'
         }).then((result) => {
@@ -54,11 +54,11 @@ class ProductItem extends Component {
 
     //When Delete button is clicked, confirmation dialog will appear
     //Upon confirmation, product id is sent to productSaga to delete in the database
-    handleDelete = () => {
+    deleteProduct = () => {
         Swal.fire({
             title: 'Please confirm',
             text: 'Are you sure you want to delete this product?',
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Delete'
         }).then((result) => {
@@ -75,7 +75,7 @@ class ProductItem extends Component {
 
         //delete button will only appear if there are 0 in stock and 0 pending orders
         let deleteButton = !this.props.product.inventory_quantity && !this.props.product.order_quantity
-            ? <td><button onClick={this.handleDelete}>Delete</button></td>
+            ? <td><button onClick={this.deleteProduct}>Delete Product</button></td>
             : <td></td>
 
         return (
@@ -84,11 +84,11 @@ class ProductItem extends Component {
                 {this.state.editMode
                     ?
                     <tr>
-                        <td><input value={this.state.productDescription} onChange={(event) => { this.handleChange(event, 'productDescription') }} /></td>
-                        <td><input value={this.state.sku} onChange={(event) => { this.handleChange(event, 'sku') }} /></td>
+                        <td><input value={this.state.productDescription} onChange={(event) => { this.handleProductChange(event, 'productDescription') }} /></td>
+                        <td><input value={this.state.sku} onChange={(event) => { this.handleProductChange(event, 'sku') }} /></td>
                         <td>{this.props.product.inventory_quantity || 0}</td>
                         <td>{this.props.product.order_quantity || 0}</td>
-                        <td><button onClick={this.saveChanges}>Save</button></td>
+                        <td><button onClick={this.saveProductChanges}>Save</button></td>
                         {deleteButton}
                     </tr>
                     :
@@ -97,7 +97,7 @@ class ProductItem extends Component {
                         <td>{this.props.product.sku}</td>
                         <td>{this.props.product.inventory_quantity || 0}</td>
                         <td>{this.props.product.order_quantity || 0}</td>
-                        <td><button onClick={this.toggleEditMode}>Edit</button></td>
+                        <td><button onClick={this.toggleEditMode}>Edit Product</button></td>
                         {deleteButton}
                     </tr>
                 }

@@ -16,7 +16,7 @@ function* fetchProducts() {
 }
 
 //sends POST request to product.router.js then sends GET request
-function* addProduct(action) {
+function* addNewProduct(action) {
     try {
         yield axios.post('/products', action.payload)
         yield put({
@@ -44,7 +44,8 @@ function* updateProduct(action) {
 //sends DELETE request to product.router.js then sends GET request
 function* deleteProduct(action) {
     try {
-        yield axios.delete('/products', action.payload)
+        yield console.log(action.payload)
+        yield axios.delete(`/products/${action.payload.productId}`)
         yield put({
             type: 'FETCH_PRODUCTS'
         })
@@ -56,7 +57,7 @@ function* deleteProduct(action) {
 
 function* productSagaRoot() {
     yield takeEvery('FETCH_PRODUCTS', fetchProducts);
-    yield takeEvery('ADD_NEW_PRODUCT', addProduct);
+    yield takeEvery('ADD_NEW_PRODUCT', addNewProduct);
     yield takeEvery('UPDATE_PRODUCT', updateProduct);
     yield takeEvery('DELETE_PRODUCT', deleteProduct);
 }

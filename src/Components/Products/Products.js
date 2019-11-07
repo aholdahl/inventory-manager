@@ -23,7 +23,7 @@ class Products extends Component {
         })
     }
 
-    //When Add button is clicked, local state is sent to productSaga to post to the database
+    //When Add Product button is clicked, local state is sent to productSaga to post to the database
     //Local state is reset to blanks
     submitNewProduct = () => {
         this.props.dispatch({
@@ -31,14 +31,16 @@ class Products extends Component {
             payload: { ...this.state }
         })
         this.setState({
+            ...this.state,
             newProductSku: '',
             newProductDescription: ''
         })
     }
 
     render() {
+
         //maps over array of products then uses ProductItem component to render each item as a table row
-        let renderItems = this.props.products.map((item) => {
+        let renderProductItems = this.props.products.map((item) => {
             return (<ProductItem key={item.product_id} product={item} />)
         })
 
@@ -49,7 +51,7 @@ class Products extends Component {
                 <h3>Add Product</h3>
                 <input placeholder="Product Description" value={this.state.newProductDescription} onChange={(event) => { this.handleNewProduct(event, 'newProductDescription') }} />
                 <input placeholder="SKU" value={this.state.newProductSku} onChange={(event) => { this.handleNewProduct(event, 'newProductSku') }} />
-                <button onClick={this.submitNewProduct}>Add</button>
+                <button onClick={this.submitNewProduct}>Add Product</button>
 
                 <h3>Current Products</h3>
                 <table>
@@ -64,7 +66,7 @@ class Products extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {renderItems}
+                        {renderProductItems}
                     </tbody>
                 </table>
             </section>
