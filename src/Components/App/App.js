@@ -13,10 +13,10 @@ class App extends Component {
       <div className="App">
         <h1>Inventory Manager</h1>
         <Bins />
+        <Products />
         <Inventory />
         <OrderLines />
         <Orders />
-        <Products />
       </div>
     )
   }

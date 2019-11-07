@@ -72,7 +72,7 @@ class BinItem extends Component {
     render() {
 
         //delete button will only appear if the inventory_contents are empty
-        let deleteButton = this.props.bin.inventory_contents[0] === null
+        const deleteButton = this.props.bin.inventory_contents[0] === null
             ? <td><button onClick={this.deleteBin}>Delete</button></td>
             : <td></td>
 
@@ -84,7 +84,7 @@ class BinItem extends Component {
                         <td><input value={this.state.binName} onChange={this.handleBinChange} /></td>
                         <td>{this.props.bin.inventory_contents[0] === null ? '(empty)' :
                             this.props.bin.inventory_contents.map((item) => {
-                                return (<p>{item.product_description}</p>)
+                                return (<p>{item.quantity} {item.product_description}{item.quantity > 1 && 's'}</p>)
                             })}</td>
                         <td><button onClick={this.saveBinChanges}>Save</button></td>
                         {deleteButton}

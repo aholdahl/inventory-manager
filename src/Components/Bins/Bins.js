@@ -38,7 +38,7 @@ class Bins extends Component {
     render() {
 
         //maps over array of bins then uses BinItem component to render each item as a table row
-        let renderBinItems = this.props.bins.map((item) => {
+        const renderBinItems = this.props.bins.map((item) => {
             return (<BinItem key={item.bin_id} bin={item} />)
         })
 

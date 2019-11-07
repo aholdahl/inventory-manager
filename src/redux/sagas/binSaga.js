@@ -11,7 +11,7 @@ function* fetchBins() {
             payload: response.data
         })
     } catch (error) {
-        yield console.log('Error in fetchBins: ', error)
+        yield Swal.fire('Error getting bins.')
     }
 }
 
@@ -24,7 +24,7 @@ function* addNewBin(action) {
         })
         yield Swal.fire('Bin added successfully!')
     } catch (error) {
-        yield Swal.fire('Error adding bin: ', error)
+        yield Swal.fire('Error adding bin.')
     }
 }
 
@@ -37,7 +37,7 @@ function* updateBin(action) {
         })
         yield Swal.fire('Bin updated successfully!')
     } catch (error) {
-        yield Swal.fire('Error updating bin: ', error)
+        yield Swal.fire('Error updating bin.')
     }
 }
 
@@ -50,7 +50,7 @@ function* deleteBin(action) {
         })
         yield Swal.fire('Bin deleted successfully!')
     } catch (error) {
-        yield Swal.fire('Error deleting bin: ', error)
+        yield Swal.fire('Error deleting bin.')
     }
 }
 

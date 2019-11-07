@@ -40,7 +40,7 @@ class Products extends Component {
     render() {
 
         //maps over array of products then uses ProductItem component to render each item as a table row
-        let renderProductItems = this.props.products.map((item) => {
+        const renderProductItems = this.props.products.map((item) => {
             return (<ProductItem key={item.product_id} product={item} />)
         })
 

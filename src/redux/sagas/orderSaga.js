@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { takeEvery, put } from 'redux-saga/effects';
+import Swal from 'sweetalert2';
 
 function* fetchOrders() {
     try {
@@ -9,7 +10,7 @@ function* fetchOrders() {
             payload: response.data
         })
     } catch (error) {
-        yield console.log('Error in fetchOrders: ', error)
+        yield Swal.fire('Error getting orders.')
     }
 }
 

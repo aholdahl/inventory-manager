@@ -74,7 +74,7 @@ class ProductItem extends Component {
     render() {
 
         //delete button will only appear if there are 0 in stock and 0 pending orders
-        let deleteButton = !this.props.product.inventory_quantity && !this.props.product.order_quantity
+        const deleteButton = !this.props.product.inventory_quantity && !this.props.product.order_quantity
             ? <td><button onClick={this.deleteProduct}>Delete Product</button></td>
             : <td></td>
 

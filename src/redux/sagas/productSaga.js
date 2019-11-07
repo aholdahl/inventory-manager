@@ -11,7 +11,7 @@ function* fetchProducts() {
             payload: response.data
         })
     } catch (error) {
-        yield console.log('Error in fetchProducts: ', error)
+        yield Swal.fire('Error getting products.')
     }
 }
 
@@ -24,7 +24,7 @@ function* addNewProduct(action) {
         })
         yield Swal.fire('Product added successfully!')
     } catch (error) {
-        yield Swal.fire('Error adding product: ', error)
+        yield Swal.fire('Error adding product.')
     }
 }
 
@@ -37,7 +37,7 @@ function* updateProduct(action) {
         })
         yield Swal.fire('Product updated successfully!')
     } catch (error) {
-        yield Swal.fire('Error updating product: ', error)
+        yield Swal.fire('Error updating product.')
     }
 }
 
@@ -51,7 +51,7 @@ function* deleteProduct(action) {
         })
         yield Swal.fire('Product deleted successfully!')
     } catch (error) {
-        yield Swal.fire('Error deleting product: ', error)
+        yield Swal.fire('Error deleting product.')
     }
 }
 

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { takeEvery, put } from 'redux-saga/effects';
+import Swal from 'sweetalert2';
 
 function* fetchOrderLines() {
     try {
@@ -9,7 +10,7 @@ function* fetchOrderLines() {
             payload: response.data
         })
     } catch (error) {
-        yield console.log('Error in fetchOrderLines: ', error)
+        yield Swal.fire('Error getting order details.')
     }
 }
 

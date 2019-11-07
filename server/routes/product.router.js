@@ -4,7 +4,7 @@ const pool = require('../modules/pool.js');
 
 //Gets all product info, total inventory quantity, and total order quantity then sends to productReducer via productSaga
 router.get('/', (req, res) => {
-    let queryText = `SELECT "product"."product_id", "sku", "product_description", SUM("inventory"."quantity") AS "inventory_quantity", SUM("order_lines"."quantity") AS "order_quantity" FROM "product" LEFT JOIN "inventory" ON "product"."product_id" = "inventory"."product_id" LEFT JOIN "order_lines" ON "product"."product_id" = "order_lines"."product_id" GROUP BY "product"."product_id";`
+    let queryText = `SELECT "product"."product_id", "sku", "product_description", SUM("inventory"."quantity") AS "inventory_quantity", SUM("order_lines"."quantity") AS "order_quantity" FROM "product" LEFT JOIN "inventory" ON "product"."product_id" = "inventory"."product_id" LEFT JOIN "order_lines" ON "product"."product_id" = "order_lines"."product_id" GROUP BY "product"."product_id" ORDER BY "product_description" ASC;`
     pool.query(queryText)
         .then((result) => {
             res.send(result.rows);

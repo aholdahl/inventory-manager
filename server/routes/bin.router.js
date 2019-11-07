@@ -4,7 +4,7 @@ const pool = require('../modules/pool.js');
 
 //Gets all bin info and inventory contents then sends to binReducer via binSaga
 router.get('/', (req, res) => {
-    let queryText = `SELECT "bins"."bin_id","bin_name",json_agg("inventory") AS "inventory_contents" FROM "bins" LEFT JOIN (SELECT * FROM "inventory" JOIN "product" ON "inventory"."product_id" = "product"."product_id") AS "inventory" ON "bins"."bin_id" = "inventory"."bin_id" GROUP BY "bins"."bin_id";`
+    let queryText = `SELECT "bins"."bin_id","bin_name",json_agg("inventory") AS "inventory_contents" FROM "bins" LEFT JOIN (SELECT * FROM "inventory" JOIN "product" ON "inventory"."product_id" = "product"."product_id" ORDER BY "product_description" ASC) AS "inventory" ON "bins"."bin_id" = "inventory"."bin_id" GROUP BY "bins"."bin_id" ORDER BY "bin_name" ASC;`
     pool.query(queryText)
         .then((result) => {
             res.send(result.rows);
