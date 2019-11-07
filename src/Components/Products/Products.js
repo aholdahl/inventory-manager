@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Swal from 'sweetalert2';
 import ProductItem from './ProductItem.js';
 
 class Products extends Component {
@@ -23,18 +24,33 @@ class Products extends Component {
         })
     }
 
-    //When Add Product button is clicked, local state is sent to productSaga to post to the database
+    //When Add Product button is clicked, a confirmation dialog will open
+    //Upon confirmation, local state is sent to productSaga to post to the database
     //Local state is reset to blanks
     submitNewProduct = () => {
-        this.props.dispatch({
-            type: 'ADD_NEW_PRODUCT',
-            payload: { ...this.state }
-        })
-        this.setState({
-            ...this.state,
-            newProductSku: '',
-            newProductDescription: ''
-        })
+        if(this.state.newProductDescription && this.state.newProductSku){
+            Swal.fire({
+                title: 'Please confirm',
+                text: 'Are you sure you want to add this product?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Save Changes'
+            }).then((result) => {
+                if (result.value) {
+                    this.props.dispatch({
+                        type: 'ADD_NEW_PRODUCT',
+                        payload: { ...this.state }
+                    })
+                    this.setState({
+                        ...this.state,
+                        newProductSku: '',
+                        newProductDescription: ''
+                    })
+                }
+            })
+        } else {
+            Swal.fire('Please complete both the description and the SKU fields.')
+        }
     }
 
     render() {
@@ -69,6 +85,7 @@ class Products extends Component {
                         {renderProductItems}
                     </tbody>
                 </table>
+                <hr />
             </section>
         )
     }

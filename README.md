@@ -22,6 +22,7 @@ Redux-Sagas
 Axios
 Node.js
 PostgreSQL
+SweetAlert2
 
 MacOS Mojave
 Visual Studio Code

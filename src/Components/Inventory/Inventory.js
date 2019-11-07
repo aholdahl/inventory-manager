@@ -33,23 +33,33 @@ class Inventory extends Component {
         let checkInventory = this.props.inventory.filter((item) => {
             return (item.product_id === this.state.selectedProduct && item.bin_id === this.state.selectedBin)
         })
-        if (this.state.newQuantity > 0){
+        if (this.state.newQuantity > 0 && this.state.selectedProduct > 0 && this.state.selectedBin > 0){
             if ( checkInventory.length === 0 ){
-                this.props.dispatch({
-                    type: 'ADD_NEW_INVENTORY',
-                    payload: { ...this.state }
-                })
-                this.setState({
-                    ...this.state,
-                    selectedProduct: 0,
-                    selectedBin: 0,
-                    newQuantity: 0
+                Swal.fire({
+                    title: 'Please confirm',
+                    text: 'Are you sure you want to add this inventory?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Save Changes'
+                }).then((result) => {
+                    if (result.value) {
+                        this.props.dispatch({
+                            type: 'ADD_NEW_INVENTORY',
+                            payload: { ...this.state }
+                        })
+                        this.setState({
+                            ...this.state,
+                            selectedProduct: 0,
+                            selectedBin: 0,
+                            newQuantity: 0
+                        })
+                    }
                 })
             } else {
                 Swal.fire('This item is already in the bin. Please update quantity on existing inventory.')
             }
         } else {
-            Swal.fire('Please enter a quantity.')
+            Swal.fire('Please select a product and bin, and enter a quantity.')
         }
     }
 
@@ -87,6 +97,7 @@ class Inventory extends Component {
                         {renderInventoryItems}
                     </tbody>
                 </table>
+                <hr />
             </section>
         )
     }

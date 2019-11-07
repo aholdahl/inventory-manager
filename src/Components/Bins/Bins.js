@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import BinItem from './BinItem.js';
+import Swal from 'sweetalert2';
 
 class Bins extends Component {
     state = {
@@ -22,17 +23,32 @@ class Bins extends Component {
         })
     }
 
-    //When Add Bin button is clicked, local state is sent to binSaga to post to the database
+    //When Add Bin button is clicked, confirmation dialog will open
+    //Upon confirmation, local state is sent to binSaga to post to the database
     //Local state is reset to blanks
     submitNewBin = () => {
-        this.props.dispatch({
-            type: 'ADD_NEW_BIN',
-            payload: { ...this.state }
-        })
-        this.setState({
-            ...this.state,
-            binName: ''
-        })
+        if(this.state.binName){
+            Swal.fire({
+                title: 'Please confirm',
+                text: 'Are you sure you want to add this product?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Save Changes'
+            }).then((result) => {
+                if (result.value) {
+                    this.props.dispatch({
+                        type: 'ADD_NEW_BIN',
+                        payload: { ...this.state }
+                    })
+                    this.setState({
+                        ...this.state,
+                        binName: ''
+                    })
+                }
+            })
+        } else {
+            Swal.fire('Please enter the bin name.')
+        }
     }
 
     render() {
@@ -64,6 +80,7 @@ class Bins extends Component {
                         {renderBinItems}
                     </tbody>
                 </table>
+                <hr/>
             </section>
         )
     }

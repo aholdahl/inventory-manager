@@ -41,7 +41,7 @@ function* updateBin(action) {
     }
 }
 
-//sends DELETE request to product.router.js then sends GET request
+//sends DELETE request to bin.router.js then sends GET request
 function* deleteBin(action) {
     try {
         yield axios.delete(`/bins/${action.payload.binId}`)

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class ProductMenu extends Component {
+    
     componentDidMount(){
         this.props.dispatch({
             type: 'FETCH_PRODUCTS'
