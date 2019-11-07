@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ProductItem from './ProductItem.js';
 
 class Products extends Component {
     state = {
@@ -22,23 +23,41 @@ class Products extends Component {
     submitNewProduct = ()=>{
         this.props.dispatch({
             type: 'ADD_NEW_PRODUCT',
-            payload: {
-                sku: this.state.newProductSku,
-                product_description: this.state.newProductDescription
-            }
+            payload: {...this.state}
+        })
+        this.setState({
+            newProductSku: '',
+            newProductDescription: ''
         })
     }
 
     render() {
         console.log(this.state)
+        let renderItems = this.props.products.map((item)=>{
+            return (<ProductItem key={item.id} product={item}/>)
+        })
+
         return (
             <section>
                 <h2>Products</h2>
                 <h3>Add Product</h3>
-                <input value={this.state.newProductSku} onChange={(event)=>{this.handleNewProduct(event, 'newProductSku')}}/>
-                <input value={this.state.newProductDescription} onChange={(event)=>{this.handleNewProduct(event,'newProductDescription')}} />
+                <input placeholder="Product Description" value={this.state.newProductDescription} onChange={(event) => { this.handleNewProduct(event, 'newProductDescription') }} />
+                <input placeholder="SKU" value={this.state.newProductSku} onChange={(event)=>{this.handleNewProduct(event, 'newProductSku')}}/>
                 <button onClick={this.submitNewProduct}>Add</button>
                 <h3>Current Products</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product Description</th>
+                            <th>SKU</th>
+                            <th># In Stock</th>
+                            <th># Ordered</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {renderItems}
+                    </tbody>
+                </table>
             </section>
         )
     }
@@ -46,7 +65,7 @@ class Products extends Component {
 
 const mapStateToProps = (store) => {
     return {
-        store
+        products: store.productReducer
     };
 };
 
