@@ -17,4 +17,10 @@ class Bins extends Component {
     }
 }
 
-export default connect()(Bins);
+const mapStateToProps = (store) => {
+    return {
+        store
+    };
+};
+
+export default connect(mapStateToProps)(Bins);

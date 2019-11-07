@@ -17,4 +17,10 @@ class OrderLines extends Component {
     }
 }
 
-export default connect()(OrderLines);
+const mapStateToProps = (store) => {
+    return {
+        store
+    };
+};
+
+export default connect(mapStateToProps)(OrderLines);

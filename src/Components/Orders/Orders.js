@@ -17,4 +17,10 @@ class Orders extends Component {
     }
 }
 
-export default connect()(Orders);
+const mapStateToProps = (store) => {
+    return {
+        store
+    };
+};
+
+export default connect(mapStateToProps)(Orders);

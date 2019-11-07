@@ -17,4 +17,10 @@ class Inventory extends Component {
     }
 }
 
-export default connect()(Inventory);
+const mapStateToProps = (store) => {
+    return {
+        store
+    };
+};
+
+export default connect(mapStateToProps)(Inventory);
