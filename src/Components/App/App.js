@@ -1,23 +1,25 @@
 import React, { Component } from 'react';
 import './App.css';
+import Bins from '../Bins/Bins.js';
 import Inventory from '../Inventory/Inventory.js';
-import { connect } from 'react-redux';
+import OrderLines from '../OrderLines/OrderLines.js';
+import Orders from '../Orders/Orders.js';
+import Products from '../Products/Products.js';
 
 class App extends Component {
-  componentDidMount() {
-    this.props.dispatch({
-      type: 'FETCH_INVENTORY'
-    })
-  }
 
   render() {
     return (
       <div className="App">
-        <h1>Hello World!</h1>
+        <h1>Inventory Manager</h1>
+        <Bins />
         <Inventory />
+        <OrderLines />
+        <Orders />
+        <Products />
       </div>
     )
   }
 }
 
-export default connect()(App);
+export default App;

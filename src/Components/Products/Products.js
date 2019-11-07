@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-class Inventory extends Component {
+class Products extends Component {
     componentDidMount() {
         this.props.dispatch({
-            type: 'FETCH_INVENTORY'
+            type: 'FETCH_PRODUCTS'
         })
     }
 
     render() {
         return (
             <section>
-                <h2>Current Inventory</h2>
+                <h2>Current Products</h2>
             </section>
         )
     }
 }
 
-export default connect()(Inventory);
+export default connect()(Products);
