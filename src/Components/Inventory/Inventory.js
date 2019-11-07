@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import InventoryItem from './InventoryItem.js';
+import Swal from 'sweetalert2';
 
 class Inventory extends Component {
     state = {
@@ -25,23 +26,35 @@ class Inventory extends Component {
     //captures new inventory values from inputs and saves in local state
     handleNewInventory = (event, property) => {
         this.setState({
-            [property]: event.target.value
+            [property]: Number(event.target.value)
         })
     }
 
-    //When Add Inventory button is clicked, local state is sent to inventorySaga to post to the database
+    //When Add Inventory button is clicked, checks if inventory already exists for that product-bin combination
+    //If not already existing, local state is sent to inventorySaga to post to the database
     //Local state is reset to blanks
     submitNewInventory = () => {
-        this.props.dispatch({
-            type: 'ADD_NEW_INVENTORY',
-            payload: { ...this.state }
+        let checkInventory = this.props.inventory.filter((item) => {
+            return (item.product_id === this.state.selectedProduct && item.bin_id === this.state.selectedBin)
         })
-        this.setState({
-            ...this.state,
-            selectedProduct: 0,
-            selectedBin: 0,
-            newQuantity: 0
-        })
+        if (this.state.newQuantity > 0){
+            if ( checkInventory.length === 0 ){
+                this.props.dispatch({
+                    type: 'ADD_NEW_INVENTORY',
+                    payload: { ...this.state }
+                })
+                this.setState({
+                    ...this.state,
+                    selectedProduct: 0,
+                    selectedBin: 0,
+                    newQuantity: 0
+                })
+            } else {
+                Swal.fire('This item is already in the bin. Please update quantity on existing inventory.')
+            }
+        } else {
+            Swal.fire('Please enter a quantity.')
+        }
     }
 
     render() {

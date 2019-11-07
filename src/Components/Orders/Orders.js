@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import OrderLines from './OrderLines.js';
 
 class Orders extends Component {
     componentDidMount() {
@@ -11,7 +12,10 @@ class Orders extends Component {
     render() {
         return (
             <section>
-                <h2>Current Orders</h2>
+                <h2>Orders</h2>
+                <h3>Place Order</h3>
+                <h3>Current Orders</h3>
+                <OrderLines/>
             </section>
         )
     }
