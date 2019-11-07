@@ -48,7 +48,6 @@ class InventoryItem extends Component {
                             inventoryId: this.props.inventory.inventory_id
                         }
                     })
-
                 }
             })
         } else {

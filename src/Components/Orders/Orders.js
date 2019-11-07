@@ -14,6 +14,7 @@ class Orders extends Component {
             <section>
                 <h2>Orders</h2>
                 <h3>Place Order</h3>
+                
                 <h3>Current Orders</h3>
                 <OrderLines/>
             </section>

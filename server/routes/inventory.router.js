@@ -4,7 +4,7 @@ const pool = require('../modules/pool.js');
 
 //Gets all inventory info, product name and sku, and bin name then sends to inventoryReducer via inventorySaga
 router.get('/', (req, res) => {
-    let queryText = `SELECT * FROM "inventory" JOIN "product" ON "inventory"."product_id" = "product"."product_id" JOIN "bins" ON "inventory"."bin_id" = "bins"."bin_id";`
+    let queryText = `SELECT * FROM "inventory" JOIN "product" ON "inventory"."product_id" = "product"."product_id" JOIN "bins" ON "inventory"."bin_id" = "bins"."bin_id" ORDER BY "product_description" ASC, "bin_name" ASC;`
     pool.query(queryText)
         .then((result) => {
             res.send(result.rows);
