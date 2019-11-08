@@ -71,11 +71,18 @@ class ProductItem extends Component {
         });
     };
 
+    //Allows user to submit using the Enter key while focus is within the Input area
+    handleKeyUp = key => {
+        if (key.key === 'Enter') {
+            this.saveProductChanges();
+        }
+    };
+
     render() {
 
         //delete button will only appear if there are 0 in stock and 0 pending orders
         const deleteButton = !this.props.product.inventory_quantity && !this.props.product.order_quantity
-            ? <td><button onClick={this.deleteProduct}>Delete Product</button></td>
+            ? <td><button title="Click to delete this Product" onClick={this.deleteProduct}>Delete Product</button></td>
             : <td></td>
 
         return (
@@ -84,11 +91,11 @@ class ProductItem extends Component {
                 {this.state.editMode
                     ?
                     <tr>
-                        <td><input value={this.state.productDescription} onChange={(event) => { this.handleProductChange(event, 'productDescription') }} /></td>
-                        <td><input value={this.state.sku} onChange={(event) => { this.handleProductChange(event, 'sku') }} /></td>
+                        <td><input required={true} title="Product Description is required" placeholder="*Product Description" value={this.state.productDescription} onChange={(event) => { this.handleProductChange(event, 'productDescription') }} onKeyUp={this.handleKeyUp}/></td>
+                        <td><input required={true} title="SKU is required" placeholder="*SKU" value={this.state.sku} onChange={(event) => { this.handleProductChange(event, 'sku') }} onKeyUp={this.handleKeyUp}/></td>
                         <td>{this.props.product.inventory_quantity || 0}</td>
                         <td>{this.props.product.order_quantity || 0}</td>
-                        <td><button onClick={this.saveProductChanges}>Save</button></td>
+                        <td><button title="Click to save changes to this Product" onClick={this.saveProductChanges}>Save</button><button title="Click to cancel changes to this product" onClick={this.toggleEditMode}>Cancel</button></td>
                         {deleteButton}
                     </tr>
                     :
@@ -97,7 +104,7 @@ class ProductItem extends Component {
                         <td>{this.props.product.sku}</td>
                         <td>{this.props.product.inventory_quantity || 0}</td>
                         <td>{this.props.product.order_quantity || 0}</td>
-                        <td><button onClick={this.toggleEditMode}>Edit Product</button></td>
+                        <td><button title="Click to edit this Product" onClick={this.toggleEditMode}>Edit Product</button></td>
                         {deleteButton}
                     </tr>
                 }

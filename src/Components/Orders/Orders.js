@@ -26,7 +26,7 @@ class Orders extends Component {
             <section>
                 <h2>Orders</h2>
                 <hr />
-                <button onClick={this.newOrder}>Place New Order</button>
+                <button title="Click to place a New Order" onClick={this.newOrder}>Place New Order</button>
                 <hr />
                 {renderOrders}
             </section>

@@ -29,7 +29,7 @@ class BinItem extends Component {
     //When Save button is clicked, confirmation dialog will appear
     //Upon confirmation, local state is sent to binSaga to update the database
     //State returns to editMode: false
-    saveBinChanges = () => {
+    saveBinChanges = (event) => {
         Swal.fire({
             title: 'Please confirm',
             text: 'Are you sure you want to update this bin?',
@@ -69,11 +69,18 @@ class BinItem extends Component {
         });
     };
 
+    //Allows user to submit using the Enter key while focus is within the Input area
+    handleKeyUp = key => {
+        if (key.key === 'Enter') {
+            this.saveBinChanges();
+        }
+    };
+
     render() {
 
         //delete button will only appear if the inventory_contents are empty
         const deleteButton = this.props.bin.inventory_contents[0] === null
-            ? <td><button onClick={this.deleteBin}>Delete Bin</button></td>
+            ? <td><button title="Click to delete this Bin" onClick={this.deleteBin}>Delete Bin</button></td>
             : <td></td>
 
         return (
@@ -81,12 +88,12 @@ class BinItem extends Component {
                 {/* If inventory contents are [NULL], render (empty) */}
                 {this.state.editMode ?
                     <tr>
-                        <td><input value={this.state.binName} onChange={this.handleBinChange} /></td>
+                        <td><input required={true} title="Bin Name is required" placeholder="*Bin Name" value={this.state.binName} onChange={this.handleBinChange} onKeyUp={this.handleKeyUp}/></td>
                         <td>{this.props.bin.inventory_contents[0] === null ? '(empty)' :
-                            this.props.bin.inventory_contents.map((item) => {
-                                return (<p>{item.quantity} {item.product_description}{item.quantity > 1 && 's'}</p>)
+                            this.props.bin.inventory_contents.map((item, i) => {
+                                return (<p key={i}>{item.quantity} {item.product_description}</p>)
                             })}</td>
-                        <td><button onClick={this.saveBinChanges}>Save</button></td>
+                        <td><button title="Click to save changes to this Bin" onClick={this.saveBinChanges}>Save</button><button title="Click to cancel changes to this Bin" onClick={this.toggleEditMode}>Cancel</button></td>
                         {deleteButton}
                     </tr>
                     :
@@ -94,9 +101,9 @@ class BinItem extends Component {
                         <td>{this.props.bin.bin_name}</td>
                         <td>{this.props.bin.inventory_contents[0] === null ? '(Empty)' :
                             this.props.bin.inventory_contents.map((item, i) => {
-                                return (<p key={i}>{item.product_description}</p>)
+                                return (<p key={i}>{item.quantity} {item.product_description}</p>)
                             })}</td>
-                        <td><button onClick={this.toggleEditMode}>Edit Bin</button></td>
+                        <td><button title="Click to edit this Bin" onClick={this.toggleEditMode}>Edit Bin</button></td>
                         {deleteButton}
                     </tr>
                 }

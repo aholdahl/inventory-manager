@@ -4,7 +4,7 @@ const pool = require('../modules/pool.js');
 
 //Gets all order info and corresponding line items then sends to orderReducer via orderaga
 router.get('/', (req, res) => {
-    let queryText = `SELECT "order"."order_id","order_number","date_ordered","customer_name","customer_address",json_agg("order_lines") AS "order_lines" FROM "order" JOIN (SELECT * FROM "order_lines" JOIN "product" ON "order_lines"."product_id" = "product"."product_id" ORDER BY "product_description" ASC) AS "order_lines" ON "order"."order_id" = "order_lines"."order_id" GROUP BY "order"."order_id" ORDER BY "date_ordered" ASC;`
+    let queryText = `SELECT "order"."order_id","order_number","date_ordered","customer_name","customer_address",json_agg("order_lines") AS "order_lines" FROM "order" JOIN (SELECT * FROM "order_lines" JOIN "product" ON "order_lines"."product_id" = "product"."product_id" ORDER BY "product_description" ASC) AS "order_lines" ON "order"."order_id" = "order_lines"."order_id" GROUP BY "order"."order_id" ORDER BY "date_ordered" ASC, "order_id" ASC;`
     pool.query(queryText)
         .then((result) => {
             res.send(result.rows);

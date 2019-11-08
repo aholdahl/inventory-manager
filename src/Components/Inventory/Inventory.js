@@ -63,6 +63,13 @@ class Inventory extends Component {
         };
     };
 
+    //Allows user to submit using the Enter key while focus is within the Input area
+    handleKeyUp = key => {
+        if (key.key === 'Enter') {
+            this.submitNewInventory();
+        }
+    };
+
     render() {
 
         //maps over array of inventory then uses InventoryItem component to render each item as a table row
@@ -78,8 +85,8 @@ class Inventory extends Component {
                 {/* Uses the ProductMenu and BinMenu components to render dropdowns. */}
                 <ProductMenu selectedProduct={this.state.selectedProduct} handleChange={this.handleNewInventory} />
                 <BinMenu selectedBin={this.state.selectedBin} handleChange={this.handleNewInventory} />
-                <input placeholder="Enter Quantity" value={this.state.newQuantity > 0 ? this.state.newQuantity : ''} onChange={(event) => { this.handleNewInventory(event, 'newQuantity') }} />
-                <button onClick={this.submitNewInventory}>Add Inventory</button>
+                <input required={true} title="Quantity must be integer greater than 0" placeholder="*Enter Quantity" value={this.state.newQuantity > 0 ? this.state.newQuantity : ''} onChange={(event) => { this.handleNewInventory(event, 'newQuantity') }} onKeyUp={this.handleKeyUp}/>
+                <button title="Click to add new Inventory" onClick={this.submitNewInventory}>Add Inventory</button>
 
                 <h3>Current Inventory</h3>
                 <table>

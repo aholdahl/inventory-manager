@@ -56,7 +56,7 @@ class Orders extends Component {
                     <td>{item.sku}</td>
                     <td>{item.quantity}</td>
                     {/* <td><button>Edit Order Item</button></td> */}
-                    <td><button onClick={(event) => { this.deleteOrderItem(item.order_line_id) }}>Delete Order Item</button></td>
+                    <td><button title="Click to delete this Product from the Order" onClick={(event) => { this.deleteOrderItem(item.order_line_id) }}>Delete Order Item</button></td>
                 </tr>
             )
         });
@@ -81,7 +81,7 @@ class Orders extends Component {
                         {renderOrderLines}
                     </tbody>
                 </table>
-                <button onClick={this.deleteOrder}>Delete Order</button>
+                <button title="Click to delete this Order" onClick={this.deleteOrder}>Delete Order</button>
             </section>
         )
     }

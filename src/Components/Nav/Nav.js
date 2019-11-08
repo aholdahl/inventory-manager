@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class Nav extends Component {
     render() {
@@ -7,12 +7,11 @@ class Nav extends Component {
             <header>
                 <h1>Inventory Manager</h1>
                 <nav>
-                    <Link to="/bins">Bins</Link>
-                    <Link to="/products">Products</Link>
-                    <Link to="/inventory">Inventory</Link>
-                    <Link to="/orders">Orders</Link>
-                    <Link to="/cart">New Order</Link>
-
+                    <NavLink to="/bins" title="Click to view Bins" activeClassName="currentPage">Bins</NavLink>
+                    <NavLink to="/products" title="Click to view Products" activeClassName="currentPage">Products</NavLink>
+                    <NavLink to="/inventory" title="Click to view Inventory" activeClassName="currentPage">Inventory</NavLink>
+                    <NavLink to="/orders" title="Click to view Orders" activeClassName="currentPage">Orders</NavLink>
+                    <NavLink to="/cart" title="Click to view New Order Form" activeClassName="currentPage">New Order</NavLink>
                 </nav>
             </header>
         )

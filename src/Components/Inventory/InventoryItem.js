@@ -75,6 +75,13 @@ class InventoryItem extends Component {
         });
     };
 
+    //Allows user to submit using the Enter key while focus is within the Input area
+    handleKeyUp = key => {
+        if (key.key === 'Enter') {
+            this.saveInventoryChanges();
+        }
+    };
+
     render() {
         return (
             <>
@@ -83,9 +90,9 @@ class InventoryItem extends Component {
                         <td>{this.props.inventory.product_description}</td>
                         <td>{this.props.inventory.sku}</td>
                         <td>{this.props.inventory.bin_name}</td>
-                        <td><input value={this.state.quantity} onChange={this.handleInventoryChange} /></td>
-                        <td><button onClick={this.saveInventoryChanges}>Save</button></td>
-                        <td><button onClick={this.deleteInventory}>Delete Inventory</button></td>
+                        <td><input required={true} title="Quantity must be integer greater than 0" placeholder="*Enter Quantity" value={this.state.quantity} onChange={this.handleInventoryChange} onKeyUp={this.handleKeyUp}/></td>
+                        <td><button title="Click to save changes to this Inventory" onClick={this.saveInventoryChanges}>Save</button><button title="Click to cancel changes to this Inventory" onClick={this.toggleEditMode}>Cancel</button></td>
+                        <td><button title="Click to delete this Inventory" onClick={this.deleteInventory}>Delete Inventory</button></td>
                     </tr>
                     :
                     <tr>
@@ -93,8 +100,8 @@ class InventoryItem extends Component {
                         <td>{this.props.inventory.sku}</td>
                         <td>{this.props.inventory.bin_name}</td>
                         <td>{this.props.inventory.quantity}</td>
-                        <td><button onClick={this.toggleEditMode}>Edit Inventory</button></td>
-                        <td><button onClick={this.deleteInventory}>Delete Inventory</button></td>
+                        <td><button title="Click to edit this Inventory" onClick={this.toggleEditMode}>Edit Inventory</button></td>
+                        <td><button title="Click to delete this Inventory" onClick={this.deleteInventory}>Delete Inventory</button></td>
                     </tr>
                 }
             </>

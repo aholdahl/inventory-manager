@@ -98,8 +98,7 @@ The Orders page reflects all orders placed with the company.
 
 # Next Steps / Version 2.0 Wishlist
 
-- Make it Accessible
-- Make it Responsive
+- Make it screen-size responsive
 
 - Product price?
 - Update bin# on Inventory page?
@@ -108,6 +107,10 @@ The Orders page reflects all orders placed with the company.
 - Update Order Item Quantity on Orders page (OrderLines and Cart)?
 - Automatic order stacking when same product is added to cart.
 - Order fulfillment status?
+
+- Detailed error messages
+    - Reset input focus to error location
+- "No items to show" placeholder message when array is empty
 
 # Author Attribution
 

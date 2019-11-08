@@ -53,6 +53,13 @@ class Products extends Component {
         };
     };
 
+    //Allows user to submit using the Enter key while focus is within the Input area
+    handleKeyUp = key => {
+        if (key.key === 'Enter') {
+            this.submitNewProduct();
+        }
+    };
+
     render() {
 
         //maps over array of products then uses ProductItem component to render each item as a table row
@@ -65,9 +72,9 @@ class Products extends Component {
                 <h2>Products</h2>
                 <hr />
                 <h3>Add Product</h3>
-                <input placeholder="Product Description" value={this.state.newProductDescription} onChange={(event) => { this.handleNewProduct(event, 'newProductDescription') }} />
-                <input placeholder="SKU" value={this.state.newProductSku} onChange={(event) => { this.handleNewProduct(event, 'newProductSku') }} />
-                <button onClick={this.submitNewProduct}>Add Product</button>
+                <input required={true} title="Product Description is required" placeholder="*Product Description" value={this.state.newProductDescription} onChange={(event) => { this.handleNewProduct(event, 'newProductDescription') }} onKeyUp={this.handleKeyUp}/>
+                <input required={true} title="SKU is required" placeholder="*SKU" value={this.state.newProductSku} onChange={(event) => { this.handleNewProduct(event, 'newProductSku') }} onKeyUp={this.handleKeyUp}/>
+                <button title="Click to add new Product" onClick={this.submitNewProduct}>Add Product</button>
 
                 <h3>Current Products</h3>
                 <table>

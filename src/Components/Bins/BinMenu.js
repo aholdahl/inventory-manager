@@ -18,8 +18,8 @@ class BinMenu extends Component {
         })
 
         return (
-            <select value={this.props.selectedBin} onChange={(event) => { this.props.handleChange(event, 'selectedBin') }}>
-                <option value={0}>Select Bin</option>
+            <select required="true" title="Please select a Bin" value={this.props.selectedBin} onChange={(event) => { this.props.handleChange(event, 'selectedBin') }}>
+                <option value={0}>*Select Bin</option>
                 {renderBinDropdown}
             </select>
         )

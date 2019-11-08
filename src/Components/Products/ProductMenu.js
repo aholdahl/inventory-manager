@@ -17,8 +17,8 @@ class ProductMenu extends Component {
         });
 
         return (
-            <select value={this.props.selectedProduct} onChange={(event) => { this.props.handleChange(event, 'selectedProduct') }}>
-                <option value={0}>Select Product</option>
+            <select required={true} title="Please select a product" value={this.props.selectedProduct} onChange={(event) => { this.props.handleChange(event, 'selectedProduct') }}>
+                <option value={0}>*Select Product</option>
                 {renderProductDropdown}
             </select>
         )

@@ -51,6 +51,13 @@ class Bins extends Component {
         }
     }
 
+    //Allows user to submit using the Enter key while focus is within the Input area
+    handleKeyUp = key => {
+        if (key.key === 'Enter') {
+            this.submitNewBin();
+        }
+    };
+
     render() {
 
         //maps over array of bins then uses BinItem component to render each item as a table row
@@ -63,8 +70,8 @@ class Bins extends Component {
                 <h2>Bins</h2>
                 <hr />
                 <h3>Add Bin</h3>
-                <input placeholder="Bin Name" value={this.state.binName} onChange={this.handleNewBin} />
-                <button onClick={this.submitNewBin}>Add Bin</button>
+                <input required={true} title="Bin Name is required" placeholder="*Bin Name" value={this.state.binName} onChange={this.handleNewBin} onKeyUp={this.handleKeyUp}/>
+                <button title="Click to add new Bin" onClick={this.submitNewBin}>Add Bin</button>
 
                 <h3>Current Bins</h3>
                 <table>
