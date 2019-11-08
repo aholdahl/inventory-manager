@@ -7,28 +7,28 @@ class Products extends Component {
     state = {
         newProductSku: '',
         newProductDescription: ''
-    }
+    };
 
     //gets all products and quantities on mount
     componentDidMount() {
         this.props.dispatch({
             type: 'FETCH_PRODUCTS'
-        })
-    }
+        });
+    };
 
     //captures new product values from inputs and saves in local state
     handleNewProduct = (event, property) => {
         this.setState({
             ...this.state,
             [property]: event.target.value
-        })
-    }
+        });
+    };
 
     //When Add Product button is clicked, a confirmation dialog will open
     //Upon confirmation, local state is sent to productSaga to post to the database
     //Local state is reset to blanks
     submitNewProduct = () => {
-        if(this.state.newProductDescription && this.state.newProductSku){
+        if (this.state.newProductDescription && this.state.newProductSku) {
             Swal.fire({
                 title: 'Please confirm',
                 text: 'Are you sure you want to add this product?',
@@ -40,25 +40,25 @@ class Products extends Component {
                     this.props.dispatch({
                         type: 'ADD_NEW_PRODUCT',
                         payload: { ...this.state }
-                    })
+                    });
                     this.setState({
                         ...this.state,
                         newProductSku: '',
                         newProductDescription: ''
-                    })
-                }
-            })
+                    });
+                };
+            });
         } else {
             Swal.fire('Please complete both the description and the SKU fields.')
-        }
-    }
+        };
+    };
 
     render() {
 
         //maps over array of products then uses ProductItem component to render each item as a table row
         const renderProductItems = this.props.products.map((item) => {
             return (<ProductItem key={item.product_id} product={item} />)
-        })
+        });
 
         return (
             <section>

@@ -11,8 +11,8 @@ router.get('/', (req, res) => {
         }).catch((error) => {
             console.log(error);
             res.sendStatus(500);
-        })
-})
+        });
+});
 
 //Posts new product info then sends status code to productSaga
 router.post('/', (req, res) => {
@@ -23,8 +23,8 @@ router.post('/', (req, res) => {
         }).catch((error) => {
             console.log(error);
             res.sendStatus(500);
-        })
-})
+        });
+});
 
 //Saves updated product info then sends status code to productSaga
 router.put('/', (req, res) => {
@@ -35,8 +35,8 @@ router.put('/', (req, res) => {
         }).catch((error) => {
             console.log(error);
             res.sendStatus(500);
-        })
-})
+        });
+});
 
 //Deletes product info then sends status code to productSaga
 router.delete('/:productId', (req, res) => {
@@ -47,7 +47,7 @@ router.delete('/:productId', (req, res) => {
         }).catch((error) => {
             console.log(error);
             res.sendStatus(500);
-        })
-})
+        });
+});
 
 module.exports = router;

@@ -33,11 +33,14 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    color: #fdc945;
+}
+
 main {
     margin: 10px;
     text-align: center;
 }
-/* section */
 
 /* input */
 

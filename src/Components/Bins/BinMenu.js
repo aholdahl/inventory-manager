@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class BinMenu extends Component {
-    
+
     //gets all bins and inventory contents on mount
     componentDidMount() {
         this.props.dispatch({

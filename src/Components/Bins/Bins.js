@@ -27,7 +27,7 @@ class Bins extends Component {
     //Upon confirmation, local state is sent to binSaga to post to the database
     //Local state is reset to blanks
     submitNewBin = () => {
-        if(this.state.binName){
+        if (this.state.binName) {
             Swal.fire({
                 title: 'Please confirm',
                 text: 'Are you sure you want to add this product?',

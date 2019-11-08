@@ -9,56 +9,56 @@ function* fetchBins() {
         yield put({
             type: 'SET_BINS',
             payload: response.data
-        })
+        });
     } catch (error) {
-        yield Swal.fire('Error getting bins.')
-    }
-}
+        yield Swal.fire('Error getting bins.');
+    };
+};
 
 //sends POST request to bin.router.js then sends GET request
 function* addNewBin(action) {
     try {
-        yield axios.post('/bins', action.payload)
+        yield axios.post('/bins', action.payload);
         yield put({
             type: 'FETCH_BINS'
-        })
-        yield Swal.fire('Bin added successfully!')
+        });
+        yield Swal.fire('Bin added successfully!');
     } catch (error) {
-        yield Swal.fire('Error adding bin.')
-    }
-}
+        yield Swal.fire('Error adding bin.');
+    };
+};
 
 //sends PUT request to bin.router.js then sends GET request
 function* updateBin(action) {
     try {
-        yield axios.put('/bins', action.payload)
+        yield axios.put('/bins', action.payload);
         yield put({
             type: 'FETCH_BINS'
-        })
-        yield Swal.fire('Bin updated successfully!')
+        });
+        yield Swal.fire('Bin updated successfully!');
     } catch (error) {
-        yield Swal.fire('Error updating bin.')
-    }
-}
+        yield Swal.fire('Error updating bin.');
+    };
+};
 
 //sends DELETE request to bin.router.js then sends GET request
 function* deleteBin(action) {
     try {
-        yield axios.delete(`/bins/${action.payload.binId}`)
+        yield axios.delete(`/bins/${action.payload.binId}`);
         yield put({
             type: 'FETCH_BINS'
-        })
-        yield Swal.fire('Bin deleted successfully!')
+        });
+        yield Swal.fire('Bin deleted successfully!');
     } catch (error) {
-        yield Swal.fire('Error deleting bin.')
-    }
-}
+        yield Swal.fire('Error deleting bin.');
+    };
+};
 
 function* binSagaRoot() {
     yield takeEvery('FETCH_BINS', fetchBins);
     yield takeEvery('ADD_NEW_BIN', addNewBin);
     yield takeEvery('UPDATE_BIN', updateBin);
     yield takeEvery('DELETE_BIN', deleteBin);
-}
+};
 
 export default binSagaRoot;

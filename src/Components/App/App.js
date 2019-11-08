@@ -25,12 +25,12 @@ class App extends Component {
           <main>
             <Switch>
               <Redirect exact from="/" to="/orders" />
-              
+
               <Route exact path="/bins" component={Bins} />
-              <Route exact path="/products" component={Products}/>
-              <Route exact path="/inventory" component={Inventory}/>
-              <Route exact path="/cart" component={OrderForm}/>
-              <Route exact path="/orders" component={Orders}/>
+              <Route exact path="/products" component={Products} />
+              <Route exact path="/inventory" component={Inventory} />
+              <Route exact path="/cart" component={OrderForm} />
+              <Route exact path="/orders" component={Orders} />
 
               {/* If none of the other routes matched, we will show a 404. */}
               <Route render={() => <h2>404: Page not found</h2>} />

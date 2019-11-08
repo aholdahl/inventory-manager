@@ -10,8 +10,8 @@ router.get('/', (req, res) => {
             res.send(result.rows);
         }).catch((error) => {
             console.log(error);
-        })
-    })
+        });
+});
 
 //Posts new inventory info then sends status code to inventorySaga
 router.post('/', (req, res) => {
@@ -22,8 +22,8 @@ router.post('/', (req, res) => {
         }).catch((error) => {
             console.log(error);
             res.sendStatus(500);
-        })
-})
+        });
+});
 
 //Saves updated inventory info then sends status code to inventorySaga
 router.patch('/', (req, res) => {
@@ -34,8 +34,8 @@ router.patch('/', (req, res) => {
         }).catch((error) => {
             console.log(error);
             res.sendStatus(500);
-        })
-})
+        });
+});
 
 //Deletes inventory info then sends status code to inventorySaga
 router.delete('/:inventoryId', (req, res) => {
@@ -46,7 +46,7 @@ router.delete('/:inventoryId', (req, res) => {
         }).catch((error) => {
             console.log(error);
             res.sendStatus(500);
-        })
-})
+        });
+});
 
 module.exports = router;

@@ -7,7 +7,7 @@ class ProductItem extends Component {
         sku: '',
         productDescription: '',
         editMode: false
-    }
+    };
 
     //When Edit button is clicked, stores product prop in local state and renders as inputs.
     //When Save button is clicked, renders as text
@@ -17,16 +17,16 @@ class ProductItem extends Component {
             sku: this.props.product.sku,
             productDescription: this.props.product.product_description,
             editMode: !this.state.editMode
-        })
-    }
+        });
+    };
 
     //In Edit mode, captures any changes to the input values and stores in local state
     handleProductChange = (event, property) => {
         this.setState({
             ...this.state,
             [property]: event.target.value
-        })
-    }
+        });
+    };
 
     //When Save button is clicked, confirmation dialog will appear
     //Upon confirmation, local state is sent to productSaga to update the database
@@ -46,11 +46,11 @@ class ProductItem extends Component {
                         ...this.state,
                         productId: this.props.product.product_id
                     }
-                })
-            }
-            this.toggleEditMode()
-        })
-    }
+                });
+            };
+            this.toggleEditMode();
+        });
+    };
 
     //When Delete button is clicked, confirmation dialog will appear
     //Upon confirmation, product id is sent to productSaga to delete in the database
@@ -66,10 +66,10 @@ class ProductItem extends Component {
                 this.props.dispatch({
                     type: 'DELETE_PRODUCT',
                     payload: { productId: this.props.product.product_id }
-                })
-            }
-        })
-    }
+                });
+            };
+        });
+    };
 
     render() {
 

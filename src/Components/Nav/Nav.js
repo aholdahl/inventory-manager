@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class Nav extends Component {
-    render(){
+    render() {
         return (
             <header>
                 <h1>Inventory Manager</h1>

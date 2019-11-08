@@ -6,7 +6,7 @@ class InventoryItem extends Component {
     state = {
         quantity: 0,
         editMode: false
-    }
+    };
 
     //When Edit button is clicked, stores inventory prop in local state and renders as inputs.
     //When Save button is clicked, renders as text
@@ -15,16 +15,16 @@ class InventoryItem extends Component {
             ...this.state,
             quantity: this.props.inventory.quantity,
             editMode: !this.state.editMode
-        })
-    }
+        });
+    };
 
     //In Edit mode, captures any changes to the input values and stores in local state
     handleInventoryChange = (event) => {
         this.setState({
             ...this.state,
             quantity: event.target.value
-        })
-    }
+        });
+    };
 
     //When Save button is clicked, quantity is checked for greater than 0
     //If less than zero, request is diverted to deleteInventory function instead
@@ -47,14 +47,14 @@ class InventoryItem extends Component {
                             ...this.state,
                             inventoryId: this.props.inventory.inventory_id
                         }
-                    })
-                }
-            })
+                    });
+                };
+            });
         } else {
             this.deleteInventory();
-        }
-        this.toggleEditMode()
-    }
+        };
+        this.toggleEditMode();
+    };
 
     //When Delete button is clicked, confirmation dialog will appear
     //Upon confirmation, inventory id is sent to inventorySaga to delete in the database
@@ -70,10 +70,10 @@ class InventoryItem extends Component {
                 this.props.dispatch({
                     type: 'DELETE_INVENTORY',
                     payload: { inventoryId: this.props.inventory.inventory_id }
-                })
-            }
-        })
-    }
+                });
+            };
+        });
+    };
 
     render() {
         return (

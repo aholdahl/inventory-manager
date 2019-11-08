@@ -8,26 +8,26 @@ class Orders extends Component {
     componentDidMount() {
         this.props.dispatch({
             type: 'FETCH_ORDERS'
-        })
-    }
+        });
+    };
 
-    newOrder = ()=>{
+    newOrder = () => {
         this.props.history.push('/cart');
-    }
+    };
 
     render() {
 
         //maps over all orders and renders using the OrderLines component
         const renderOrders = this.props.orders.map((order) => {
             return (<OrderLines key={order.order_id} order={order} />)
-        })
+        });
 
         return (
             <section>
                 <h2>Orders</h2>
-                <hr/>
+                <hr />
                 <button onClick={this.newOrder}>Place New Order</button>
-                <hr/>
+                <hr />
                 {renderOrders}
             </section>
         )

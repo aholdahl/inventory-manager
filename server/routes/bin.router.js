@@ -11,8 +11,8 @@ router.get('/', (req, res) => {
         }).catch((error) => {
             console.log(error);
             res.sendStatus(500);
-        })
-})
+        });
+});
 
 //Posts new bin info then sends status code to binSaga
 router.post('/', (req, res) => {
@@ -23,8 +23,8 @@ router.post('/', (req, res) => {
         }).catch((error) => {
             console.log(error);
             res.sendStatus(500);
-        })
-})
+        });
+});
 
 //Saves updated bin info then sends status code to binSaga
 router.put('/', (req, res) => {
@@ -35,8 +35,8 @@ router.put('/', (req, res) => {
         }).catch((error) => {
             console.log(error);
             res.sendStatus(500);
-        })
-})
+        });
+});
 
 //Deletes bin info then sends status code to binSaga
 router.delete('/:binId', (req, res) => {
@@ -47,7 +47,7 @@ router.delete('/:binId', (req, res) => {
         }).catch((error) => {
             console.log(error);
             res.sendStatus(500);
-        })
-})
+        });
+});
 
 module.exports = router;

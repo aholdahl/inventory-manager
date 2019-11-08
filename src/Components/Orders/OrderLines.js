@@ -18,10 +18,10 @@ class Orders extends Component {
                 this.props.dispatch({
                     type: 'DELETE_ORDER',
                     payload: { orderId: this.props.order.order_id }
-                })
-            }
-        })
-    }
+                });
+            };
+        });
+    };
 
     //When Delete Item button is clicked, confirmation dialog will appear
     //Upon confirmation, order line id is sent to orderSaga to delete in the database
@@ -38,13 +38,13 @@ class Orders extends Component {
                     this.props.dispatch({
                         type: 'DELETE_ORDER_LINE',
                         payload: { orderLineId: id }
-                    })
-                }
-            })
+                    });
+                };
+            });
         } else {
             this.deleteOrder();
-        }
-    }
+        };
+    };
 
     render() {
 
@@ -59,7 +59,7 @@ class Orders extends Component {
                     <td><button onClick={(event) => { this.deleteOrderItem(item.order_line_id) }}>Delete Order Item</button></td>
                 </tr>
             )
-        })
+        });
 
         return (
             <section>

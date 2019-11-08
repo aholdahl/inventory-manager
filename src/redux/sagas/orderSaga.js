@@ -9,11 +9,11 @@ function* fetchOrders() {
         yield put({
             type: 'SET_ORDERS',
             payload: response.data
-        })
+        });
     } catch (error) {
-        yield Swal.fire('Error getting orders.')
-    }
-}
+        yield Swal.fire('Error getting orders.');
+    };
+};
 
 //sends POST request to order.router.js then sends GET request
 function* submitOrder(action) {
@@ -21,25 +21,25 @@ function* submitOrder(action) {
         yield axios.post('/orders', action.payload);
         yield put({
             type: 'FETCH_ORDERS'
-        })
-        yield Swal.fire('Order submitted successfully!')
+        });
+        yield Swal.fire('Order submitted successfully!');
     } catch (error) {
-        yield Swal.fire('Error submitting order.')
-    }
-}
+        yield Swal.fire('Error submitting order.');
+    };
+};
 
 //sends DELETE request to order.router.js to delete order and all remaining order line items, then sends GET request
-function* deleteOrder(action){
+function* deleteOrder(action) {
     try {
         yield axios.delete(`/orders/${action.payload.orderId}`);
-        yield put ({
+        yield put({
             type: 'FETCH_ORDERS'
-        })
-        yield Swal.fire('Order deleted successfully!')
+        });
+        yield Swal.fire('Order deleted successfully!');
     } catch (error) {
-        yield Swal.fire('Error deleting order.')
-    }
-}
+        yield Swal.fire('Error deleting order.');
+    };
+};
 
 //sends DELETE request to order.router.js to delete order line item then sends GET request
 function* deleteOrderLine(action) {
@@ -47,18 +47,18 @@ function* deleteOrderLine(action) {
         yield axios.delete(`/orders/line/${action.payload.orderLineId}`);
         yield put({
             type: 'FETCH_ORDERS'
-        })
-        yield Swal.fire('Order item deleted successfully!')
+        });
+        yield Swal.fire('Order item deleted successfully!');
     } catch (error) {
-        yield Swal.fire('Error deleting order item.')
-    }
-}
+        yield Swal.fire('Error deleting order item.');
+    };
+};
 
 function* orderSagaRoot() {
     yield takeEvery('FETCH_ORDERS', fetchOrders);
     yield takeEvery('SUBMIT_ORDER', submitOrder);
     yield takeEvery('DELETE_ORDER', deleteOrder);
-    yield takeEvery('DELETE_ORDER_LINE', deleteOrderLine)
-}
+    yield takeEvery('DELETE_ORDER_LINE', deleteOrderLine);
+};
 
 export default orderSagaRoot;

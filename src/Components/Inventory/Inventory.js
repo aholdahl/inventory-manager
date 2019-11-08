@@ -10,21 +10,21 @@ class Inventory extends Component {
         selectedProduct: 0,
         selectedBin: 0,
         newQuantity: 0
-    }
+    };
 
     //gets all inventory on mount
     componentDidMount() {
         this.props.dispatch({
             type: 'FETCH_INVENTORY'
-        })
-    }
+        });
+    };
 
     //captures new inventory values from inputs and saves in local state
     handleNewInventory = (event, property) => {
         this.setState({
             [property]: Number(event.target.value)
-        })
-    }
+        });
+    };
 
     //When Add Inventory button is clicked, checks if inventory already exists for that product-bin combination
     //If not already existing, local state is sent to inventorySaga to post to the database
@@ -32,9 +32,9 @@ class Inventory extends Component {
     submitNewInventory = () => {
         let checkInventory = this.props.inventory.filter((item) => {
             return (item.product_id === this.state.selectedProduct && item.bin_id === this.state.selectedBin)
-        })
-        if (this.state.newQuantity > 0 && this.state.selectedProduct > 0 && this.state.selectedBin > 0){
-            if ( checkInventory.length === 0 ){
+        });
+        if (this.state.newQuantity > 0 && this.state.selectedProduct > 0 && this.state.selectedBin > 0) {
+            if (checkInventory.length === 0) {
                 Swal.fire({
                     title: 'Please confirm',
                     text: 'Are you sure you want to add this inventory?',
@@ -46,29 +46,29 @@ class Inventory extends Component {
                         this.props.dispatch({
                             type: 'ADD_NEW_INVENTORY',
                             payload: { ...this.state }
-                        })
+                        });
                         this.setState({
                             ...this.state,
                             selectedProduct: 0,
                             selectedBin: 0,
                             newQuantity: 0
-                        })
-                    }
-                })
+                        });
+                    };
+                });
             } else {
                 Swal.fire('This item is already in the bin. Please update quantity on existing inventory.')
-            }
+            };
         } else {
-            Swal.fire('Please select a product and bin, and enter a quantity.')
-        }
-    }
+            Swal.fire('Please select a product and bin, and enter a quantity.');
+        };
+    };
 
     render() {
 
         //maps over array of inventory then uses InventoryItem component to render each item as a table row
         const renderInventoryItems = this.props.inventory.map((item) => {
             return (<InventoryItem key={item.inventory_id} inventory={item} />)
-        })
+        });
 
         return (
             <section>
@@ -76,8 +76,8 @@ class Inventory extends Component {
                 <hr />
                 <h3>Add Inventory</h3>
                 {/* Uses the ProductMenu and BinMenu components to render dropdowns. */}
-                <ProductMenu selectedProduct={this.state.selectedProduct} handleChange={this.handleNewInventory}/>
-                <BinMenu selectedBin={this.state.selectedBin} handleChange={this.handleNewInventory}/>
+                <ProductMenu selectedProduct={this.state.selectedProduct} handleChange={this.handleNewInventory} />
+                <BinMenu selectedBin={this.state.selectedBin} handleChange={this.handleNewInventory} />
                 <input placeholder="Enter Quantity" value={this.state.newQuantity > 0 ? this.state.newQuantity : ''} onChange={(event) => { this.handleNewInventory(event, 'newQuantity') }} />
                 <button onClick={this.submitNewInventory}>Add Inventory</button>
 

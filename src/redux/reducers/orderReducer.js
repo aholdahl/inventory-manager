@@ -6,7 +6,7 @@ const orderReducer = (state = [], action) => {
             return action.payload;
         default:
             return state;
-    }
-}
+    };
+};
 
 export default orderReducer;

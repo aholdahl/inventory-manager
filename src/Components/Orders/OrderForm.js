@@ -12,23 +12,23 @@ class OrderForm extends Component {
         selectedProduct: 0,
         quantity: 0,
         orderLines: []
-    }
+    };
 
     //In Edit mode, captures any changes to the input values and stores in local state
     handleOrderChange = (event, property) => {
         this.setState({
             ...this.state,
             [property]: event.target.value
-        })
-    }
+        });
+    };
 
     //When the Set Date to Now button is clicked, inserts today's date into the order form
     setDate = () => {
         this.setState({
             ...this.state,
             dateOrdered: new Date().toDateString()
-        })
-    }
+        });
+    };
 
     //When Add Order Item button is clicked, new product and quantity are stored in orderLines array within local state
     //This function is purposefully not equipped with confirmation dialog, since it is storing in local state only
@@ -41,11 +41,11 @@ class OrderForm extends Component {
                     product_id: Number(this.state.selectedProduct),
                     quantity: Number(this.state.quantity)
                 }]
-            })
+            });
         } else {
             Swal.fire('Please select a product and enter a quantity.')
-        }
-    }
+        };
+    };
 
     // editCartItem = (i)=>{
     //     console.log('In EditCartItem', i)
@@ -64,9 +64,9 @@ class OrderForm extends Component {
                 this.setState({
                     orderLines: this.state.orderLines.filter(line => line !== item)
                 });
-            }
-        })
-    }
+            };
+        });
+    };
 
     //When Submit Order button is clicked, local state is checked for required fields
     submitOrder = () => {
@@ -82,14 +82,14 @@ class OrderForm extends Component {
                     this.props.dispatch({
                         type: 'SUBMIT_ORDER',
                         payload: { ...this.state }
-                    })
-                }
-                this.cancelOrder();
-            })
+                    });
+                };
+                this.cancelOrder();;
+            });
         } else {
-            Swal.fire('Please finish entering order details before submitting.')
-        }
-    }
+            Swal.fire('Please finish entering order details before submitting.');
+        };
+    };
 
     //When Cancel Order is clicked, local state is reset to original state.
     cancelOrder = () => {
@@ -102,8 +102,8 @@ class OrderForm extends Component {
             selectedProduct: 0,
             quantity: 0,
             orderLines: []
-        })
-    }
+        });
+    };
 
     render() {
 
@@ -117,7 +117,7 @@ class OrderForm extends Component {
                 {/* <td><button onClick={()=>{this.editCartItem(item)}}>Edit</button></td> */}
                 <td><button onClick={() => { this.deleteCartItem(item) }}>Delete</button></td>
             </tr>)
-        })
+        });
 
         return (
             <section>
@@ -151,7 +151,7 @@ class OrderForm extends Component {
                 <input placeholder="Order Number" value={this.state.orderNumber} onChange={(event) => { this.handleOrderChange(event, 'orderNumber') }} />
                 <input placeholder="Order Date" value={this.state.dateOrdered} onChange={(event) => { this.handleOrderChange(event, 'dateOrdered') }} />
                 <button onClick={this.setDate}>Set Date to Now</button>
-                <br/>
+                <br />
                 <button onClick={this.submitOrder}>Submit Order</button>
                 <button onClick={this.cancelOrder}>Cancel Order</button>
             </section>
