@@ -61,7 +61,7 @@ class Bins extends Component {
         return (
             <section>
                 <h2>Bins</h2>
-
+                <hr />
                 <h3>Add Bin</h3>
                 <input placeholder="Bin Name" value={this.state.binName} onChange={this.handleNewBin} />
                 <button onClick={this.submitNewBin}>Add Bin</button>
@@ -80,7 +80,6 @@ class Bins extends Component {
                         {renderBinItems}
                     </tbody>
                 </table>
-                <hr/>
             </section>
         )
     }

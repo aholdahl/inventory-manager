@@ -21,7 +21,7 @@ CREATE TABLE "order" (
 --An Order can contain more than one Order Line
 CREATE TABLE "order_lines" (
 	"order_line_id" SERIAL PRIMARY KEY,
-	"order_id" INT REFERENCES "order"("order_id") NOT NULL,
+	"order_id" INT REFERENCES "order"("order_id") NOT NULL ON DELETE CASCADE,
 	"product_id" INT REFERENCES "product"("product_id") NOT NULL,
 	"quantity" INT DEFAULT 1 --CONSTRAINT "quantity_positive" CHECK ("quantity" > 0)
 );

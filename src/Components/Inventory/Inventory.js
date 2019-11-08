@@ -73,7 +73,7 @@ class Inventory extends Component {
         return (
             <section>
                 <h2>Inventory</h2>
-
+                <hr />
                 <h3>Add Inventory</h3>
                 {/* Uses the ProductMenu and BinMenu components to render dropdowns. */}
                 <ProductMenu selectedProduct={this.state.selectedProduct} handleChange={this.handleNewInventory}/>
@@ -97,7 +97,6 @@ class Inventory extends Component {
                         {renderInventoryItems}
                     </tbody>
                 </table>
-                <hr />
             </section>
         )
     }

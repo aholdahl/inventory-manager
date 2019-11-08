@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Swal from 'sweetalert2';
 
-class OrderLines extends Component {
+class Orders extends Component {
 
     //When Delete Order button is clicked, confirmation dialog will appear
     //Upon confirmation, order id is sent to orderSaga to delete in the database
@@ -17,7 +17,7 @@ class OrderLines extends Component {
             if (result.value) {
                 this.props.dispatch({
                     type: 'DELETE_ORDER',
-                    payload: {orderId: this.props.order.order_id}
+                    payload: { orderId: this.props.order.order_id }
                 })
             }
         })
@@ -25,8 +25,8 @@ class OrderLines extends Component {
 
     //When Delete Item button is clicked, confirmation dialog will appear
     //Upon confirmation, order line id is sent to orderSaga to delete in the database
-    deleteOrderItem = (id)=>{
-        if(this.props.order.order_lines.length > 1){
+    deleteOrderItem = (id) => {
+        if (this.props.order.order_lines.length > 1) {
             Swal.fire({
                 title: 'Please confirm',
                 text: 'Are you sure you want to delete this order item?',
@@ -37,7 +37,7 @@ class OrderLines extends Component {
                 if (result.value) {
                     this.props.dispatch({
                         type: 'DELETE_ORDER_LINE',
-                        payload: {orderLineId: id}
+                        payload: { orderLineId: id }
                     })
                 }
             })
@@ -49,26 +49,24 @@ class OrderLines extends Component {
     render() {
 
         //maps over order line item and renders as table row
-        const renderOrderLines = this.props.order.order_lines.map((item)=>{
+        const renderOrderLines = this.props.order.order_lines.map((item) => {
             return (
                 <tr key={item.order_line_id}>
                     <td>{item.product_description}</td>
                     <td>{item.sku}</td>
                     <td>{item.quantity}</td>
                     {/* <td><button>Edit Order Item</button></td> */}
-                    <td><button onClick={(event)=>{this.deleteOrderItem(item.order_line_id)}}>Delete Order Item</button></td>
+                    <td><button onClick={(event) => { this.deleteOrderItem(item.order_line_id) }}>Delete Order Item</button></td>
                 </tr>
             )
         })
-        
+
         return (
             <section>
-                <hr/>
-                <h4>Order #: {this.props.order.order_number}</h4>
-                <button onClick={this.deleteOrder}>Delete Order</button>
+                <h3>Order #: {this.props.order.order_number}</h3>
+                <p>Date: {(new Date(this.props.order.date_ordered)).toDateString()}</p>
                 <p>{this.props.order.customer_name}</p>
                 <p>{this.props.order.customer_address}</p>
-                <p>Date: {(new Date(this.props.order.date_ordered)).toDateString()}</p>
                 <table>
                     <thead>
                         <tr>
@@ -83,9 +81,10 @@ class OrderLines extends Component {
                         {renderOrderLines}
                     </tbody>
                 </table>
+                <button onClick={this.deleteOrder}>Delete Order</button>
             </section>
         )
     }
 }
 
-export default connect()(OrderLines);
+export default connect()(Orders);

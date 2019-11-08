@@ -63,7 +63,7 @@ class Products extends Component {
         return (
             <section>
                 <h2>Products</h2>
-
+                <hr />
                 <h3>Add Product</h3>
                 <input placeholder="Product Description" value={this.state.newProductDescription} onChange={(event) => { this.handleNewProduct(event, 'newProductDescription') }} />
                 <input placeholder="SKU" value={this.state.newProductSku} onChange={(event) => { this.handleNewProduct(event, 'newProductSku') }} />
@@ -85,7 +85,6 @@ class Products extends Component {
                         {renderProductItems}
                     </tbody>
                 </table>
-                <hr />
             </section>
         )
     }
