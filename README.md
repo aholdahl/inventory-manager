@@ -1,5 +1,7 @@
 # Inventory Management Application
 
+## Objective
+
 An online seller fulfills customer orders placed on the seller’s website, and maintains stock of multiple products in their warehouse. The online seller uses inventory management software to accomplish these needs.
 
 The warehouse is divided into multiple bins (shelves or areas of the warehouse) to hold inventory. A bin can contain multiple different products, and a product can have inventory in multiple different bins.
@@ -12,40 +14,10 @@ While we encourage using C# and Microsoft SQL Server, please use whatever langua
 
 ![Working Image](/ERD.png)
 
-# List of Technologies
 
-This application was built using the following technologies:
+# User Documentation
 
-React.js
-Redux
-Redux-Sagas
-Axios
-Node.js
-PostgreSQL
-SweetAlert2
-
-MacOS Mojave
-Visual Studio Code
-Node Package Manager
-HomeBrew
-Postico
-Google Chrome
-
-# System Prerequisites
-
-This project was developed using the above technologies. If you are attempting to use different programs, you may need to download additional dependencies and modify the code accordingly.
-
-# Installation
-
-Click Clone or Download, then click Download ZIP Unzip the file.
-Create the database and table(s) in Postico using the SQL provided in database.sql.
-In Terminal, run the following commands:
-
-    npm install
-    npm build
-    npm start
-
-# Table of Contents
+### Table of Contents
 
 This application consists of four modules:
 
@@ -53,8 +25,6 @@ This application consists of four modules:
  - Product Management
  - Inventory Management
  - Order Management
-
-# User Documentation
 
 ## Bin Management
 
@@ -112,10 +82,43 @@ The Orders page reflects all orders placed with the company.
     - Reset input focus to error location
 - "No items to show" placeholder message when array is empty
 
-# Author Attribution
+# Attribution
 
 Created by Allyson Holdahl
 
-# Debugging/Testing Instructions and list of known issues
 # Deployment Information
-# Achnowledgements
+
+ The live production build can be found at http://inventory-manager.herokuapp.com/ 
+
+ # List of Technologies
+
+This application was built using the following technologies:
+
+React.js
+Redux
+Redux-Sagas
+Axios
+Node.js
+PostgreSQL
+SweetAlert2
+
+MacOS Mojave
+Visual Studio Code
+Node Package Manager
+HomeBrew
+Postico
+Google Chrome
+
+# System Prerequisites
+
+This project was developed using the above technologies. If you are attempting to use different programs, you may need to download additional dependencies and modify the code accordingly.
+
+# Installation
+
+Click Clone or Download, then click Download ZIP Unzip the file.
+Create the database and table(s) in Postico using the SQL provided in database.sql.
+In Terminal, run the following commands:
+
+    npm install
+    npm build
+    npm start

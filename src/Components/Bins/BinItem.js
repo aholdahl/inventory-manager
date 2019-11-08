@@ -88,7 +88,7 @@ class BinItem extends Component {
                 {/* If inventory contents are [NULL], render (empty) */}
                 {this.state.editMode ?
                     <tr>
-                        <td><input required={true} title="Bin Name is required" placeholder="*Bin Name" value={this.state.binName} onChange={this.handleBinChange} onKeyUp={this.handleKeyUp}/></td>
+                        <td><input required={true} title="Bin Name is required" placeholder="*Bin Name" value={this.state.binName} onChange={this.handleBinChange} onKeyUp={this.handleKeyUp} /></td>
                         <td>{this.props.bin.inventory_contents[0] === null ? '(empty)' :
                             this.props.bin.inventory_contents.map((item, i) => {
                                 return (<p key={i}>{item.quantity} {item.product_description}</p>)

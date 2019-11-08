@@ -85,7 +85,7 @@ class Inventory extends Component {
                 {/* Uses the ProductMenu and BinMenu components to render dropdowns. */}
                 <ProductMenu selectedProduct={this.state.selectedProduct} handleChange={this.handleNewInventory} />
                 <BinMenu selectedBin={this.state.selectedBin} handleChange={this.handleNewInventory} />
-                <input required={true} title="Quantity must be integer greater than 0" placeholder="*Enter Quantity" value={this.state.newQuantity > 0 ? this.state.newQuantity : ''} onChange={(event) => { this.handleNewInventory(event, 'newQuantity') }} onKeyUp={this.handleKeyUp}/>
+                <input required={true} title="Quantity must be integer greater than 0" placeholder="*Enter Quantity" value={this.state.newQuantity > 0 ? this.state.newQuantity : ''} onChange={(event) => { this.handleNewInventory(event, 'newQuantity') }} onKeyUp={this.handleKeyUp} />
                 <button title="Click to add new Inventory" onClick={this.submitNewInventory}>Add Inventory</button>
 
                 <h3>Current Inventory</h3>

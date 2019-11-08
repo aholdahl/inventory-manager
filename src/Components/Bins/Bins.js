@@ -70,7 +70,7 @@ class Bins extends Component {
                 <h2>Bins</h2>
                 <hr />
                 <h3>Add Bin</h3>
-                <input required={true} title="Bin Name is required" placeholder="*Bin Name" value={this.state.binName} onChange={this.handleNewBin} onKeyUp={this.handleKeyUp}/>
+                <input required={true} title="Bin Name is required" placeholder="*Bin Name" value={this.state.binName} onChange={this.handleNewBin} onKeyUp={this.handleKeyUp} />
                 <button title="Click to add new Bin" onClick={this.submitNewBin}>Add Bin</button>
 
                 <h3>Current Bins</h3>

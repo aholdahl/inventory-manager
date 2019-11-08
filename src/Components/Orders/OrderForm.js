@@ -108,9 +108,9 @@ class OrderForm extends Component {
     //Allows user to submit using the Enter key while focus is within the Input area
     handleKeyUp = (key, location) => {
         if (key.key === 'Enter') {
-            if(location === 'cart'){
+            if (location === 'cart') {
                 this.addOrderItem();
-            } else if (location === 'date'){
+            } else if (location === 'date') {
                 this.setDate();
             } else {
                 this.submitOrder();
@@ -139,7 +139,7 @@ class OrderForm extends Component {
 
                 <h3>Add To Cart</h3>
                 <ProductMenu selectedProduct={this.state.selecteProduct} handleChange={this.handleOrderChange} />
-                <input required={true} title="Quantity must be integer greater than 0" placeholder="*Enter Quantity" value={this.state.quantity > 0 ? this.state.quantity : ''} onChange={(event) => { this.handleOrderChange(event, 'quantity') }} onKeyUp={(key)=>{this.handleKeyUp(key, 'cart')}}/>
+                <input required={true} title="Quantity must be integer greater than 0" placeholder="*Enter Quantity" value={this.state.quantity > 0 ? this.state.quantity : ''} onChange={(event) => { this.handleOrderChange(event, 'quantity') }} onKeyUp={(key) => { this.handleKeyUp(key, 'cart') }} />
                 <button title="Click to add this product to the cart" onClick={this.addOrderItem}>Add To Cart</button>
 
                 <h3>Cart</h3>
@@ -159,10 +159,10 @@ class OrderForm extends Component {
                 </table>
 
                 <h3>Customer Info</h3>
-                <input required={true} title="Full name is required" placeholder="*Full Name" value={this.state.customerName} onChange={(event) => { this.handleOrderChange(event, 'customerName') }} onKeyUp={(key) => { this.handleKeyUp(key, 'customer') }}/>
-                <input required={true} title="Full address is required" placeholder="*Full Address" value={this.state.customerAddress} onChange={(event) => { this.handleOrderChange(event, 'customerAddress') }} onKeyUp={(key) => { this.handleKeyUp(key, 'customer') }}/>
-                <input required={true} title="Order Number is required" placeholder="*Order Number" value={this.state.orderNumber} onChange={(event) => { this.handleOrderChange(event, 'orderNumber') }} onKeyUp={(key) => { this.handleKeyUp(key, 'customer') }}/>
-                <input required={true} title="Order Date is required" placeholder="*Order Date" value={this.state.dateOrdered} onChange={(event) => { this.handleOrderChange(event, 'dateOrdered') }} onKeyUp={(key) => { this.handleKeyUp(key, 'date') }}/>
+                <input required={true} title="Full name is required" placeholder="*Full Name" value={this.state.customerName} onChange={(event) => { this.handleOrderChange(event, 'customerName') }} onKeyUp={(key) => { this.handleKeyUp(key, 'customer') }} />
+                <input required={true} title="Full address is required" placeholder="*Full Address" value={this.state.customerAddress} onChange={(event) => { this.handleOrderChange(event, 'customerAddress') }} onKeyUp={(key) => { this.handleKeyUp(key, 'customer') }} />
+                <input required={true} title="Order Number is required" placeholder="*Order Number" value={this.state.orderNumber} onChange={(event) => { this.handleOrderChange(event, 'orderNumber') }} onKeyUp={(key) => { this.handleKeyUp(key, 'customer') }} />
+                <input required={true} title="Order Date is required" placeholder="*Order Date" value={this.state.dateOrdered} onChange={(event) => { this.handleOrderChange(event, 'dateOrdered') }} onKeyUp={(key) => { this.handleKeyUp(key, 'date') }} />
                 <button title="Click to set today as the Order Date" onClick={this.setDate}>Set Date to Now</button>
                 <br />
                 <button title="Click to submit this order" onClick={this.submitOrder}>Submit Order</button>
