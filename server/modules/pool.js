@@ -29,5 +29,12 @@ if (process.env.DATABASE_URL) {
 
 const pool = new pg.Pool(config);
 
+pool.on('connect', () => {
+    console.log('pool connected to database');
+})
+pool.on('error', () => {
+    console.log('error connecting pool to database');
+    process.exit(-1);
+})
 
 module.exports = pool;

@@ -71,10 +71,11 @@ The Orders page reflects all orders placed with the company.
 - Make it screen-size responsive
 
 - Product price?
-- Update bin# on Inventory page?
+- Edit bin# location on Inventory page?
 - Automatic product stacking when same product-bin combination is attempted to add to inventory.
 - Location hints on Orders page?
-- Update Order Item Quantity on Orders page (OrderLines and Cart)?
+- Edit Customer Info on Orders page
+- Edit Order Item Quantity on Orders page (OrderLines and Cart)?
 - Automatic order stacking when same product is added to cart.
 - Order fulfillment status?
 
