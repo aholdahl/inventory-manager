@@ -93,7 +93,10 @@ class BinItem extends Component {
                             this.props.bin.inventory_contents.map((item, i) => {
                                 return (<p key={i}>{item.quantity} {item.product_description}</p>)
                             })}</td>
-                        <td><button title="Click to save changes to this Bin" onClick={this.saveBinChanges}>Save</button><button title="Click to cancel changes to this Bin" onClick={this.toggleEditMode}>Cancel</button></td>
+                        <td>
+                            <button title="Click to save changes to this Bin" onClick={this.saveBinChanges}>Save Changes</button>
+                            <button title="Click to cancel changes to this Bin" onClick={this.toggleEditMode}>Cancel</button>
+                        </td>
                         {deleteButton}
                     </tr>
                     :

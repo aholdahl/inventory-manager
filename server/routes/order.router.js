@@ -36,6 +36,18 @@ router.post('/', async (req, res) => {
     };
 });
 
+//Updates order details then sends status code to orderSaga
+router.put('/', (req, res) => {
+    let queryText = `UPDATE "order" SET "order_number" = $1,"date_ordered" = $2,"customer_name" = $3, "customer_address" = $4 WHERE "order_id" = $5;`
+    pool.query(queryText, [req.body.orderNumber, req.body.dateOrdered, req.body.customerName, req.body.customerAddress, req.body.orderId])
+        .then((result) => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log(error);
+            res.sendStatus(500);
+        });
+});
+
 //Deletes order line item then sends status code to orderSaga
 router.delete('/line/:orderLineId', (req, res) => {
     let queryText = `DELETE FROM "order_lines" WHERE "order_line_id" = $1;`

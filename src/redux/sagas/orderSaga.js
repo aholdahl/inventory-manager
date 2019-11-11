@@ -28,6 +28,19 @@ function* submitOrder(action) {
     };
 };
 
+//sends PUT request to order.router.js to update order details, then sends GET request
+function* updateOrder(action) {
+    try {
+        yield axios.put('/orders', action.payload);
+        yield put({
+            type: 'FETCH_ORDERS'
+        });
+        yield Swal.fire('Order updated successfully!');
+    } catch (error) {
+        yield Swal.fire('Error updating order.');
+    }
+}
+
 //sends DELETE request to order.router.js to delete order and all remaining order line items, then sends GET request
 function* deleteOrder(action) {
     try {
@@ -57,6 +70,7 @@ function* deleteOrderLine(action) {
 function* orderSagaRoot() {
     yield takeEvery('FETCH_ORDERS', fetchOrders);
     yield takeEvery('SUBMIT_ORDER', submitOrder);
+    yield takeEvery('UPDATE_ORDER', updateOrder);
     yield takeEvery('DELETE_ORDER', deleteOrder);
     yield takeEvery('DELETE_ORDER_LINE', deleteOrderLine);
 };

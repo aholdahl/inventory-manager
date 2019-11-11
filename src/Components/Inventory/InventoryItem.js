@@ -91,7 +91,10 @@ class InventoryItem extends Component {
                         <td>{this.props.inventory.sku}</td>
                         <td>{this.props.inventory.bin_name}</td>
                         <td><input required={true} title="Quantity must be integer greater than 0" placeholder="*Enter Quantity" value={this.state.quantity} onChange={this.handleInventoryChange} onKeyUp={this.handleKeyUp} /></td>
-                        <td><button title="Click to save changes to this Inventory" onClick={this.saveInventoryChanges}>Save</button><button title="Click to cancel changes to this Inventory" onClick={this.toggleEditMode}>Cancel</button></td>
+                        <td>
+                            <button title="Click to save changes to this Inventory" onClick={this.saveInventoryChanges}>Save Changes</button>
+                            <button title="Click to cancel changes to this Inventory" onClick={this.toggleEditMode}>Cancel</button>
+                        </td>
                         <td><button title="Click to delete this Inventory" onClick={this.deleteInventory}>Delete Inventory</button></td>
                     </tr>
                     :
