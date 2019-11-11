@@ -74,8 +74,6 @@ The New Order page reflects a form where the user may add a new order.
 
 # Next Steps / Version 2.0 Wishlist
 
-- Make it screen-size responsive
-
 - Product price?
 - Edit bin# location on Inventory page?
 - Automatic product stacking when same product-bin combination is attempted to add to inventory.

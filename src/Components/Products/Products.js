@@ -77,7 +77,7 @@ class Products extends Component {
                 <button title="Click to add new Product" onClick={this.submitNewProduct}>Add Product</button>
 
                 <h3>Current Products</h3>
-                <table>
+                <table className="productTable">
                     <thead>
                         <tr>
                             <th>Product Description</th>

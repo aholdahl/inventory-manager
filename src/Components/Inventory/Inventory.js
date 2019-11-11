@@ -89,7 +89,7 @@ class Inventory extends Component {
                 <button title="Click to add new Inventory" onClick={this.submitNewInventory}>Add Inventory</button>
 
                 <h3>Current Inventory</h3>
-                <table>
+                <table className="inventoryTable">
                     <thead>
                         <tr>
                             <th>Product</th>

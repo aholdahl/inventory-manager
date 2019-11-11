@@ -74,7 +74,7 @@ class Bins extends Component {
                 <button title="Click to add new Bin" onClick={this.submitNewBin}>Add Bin</button>
 
                 <h3>Current Bins</h3>
-                <table>
+                <table className="binTable">
                     <thead>
                         <tr>
                             <th>Bin Name</th>

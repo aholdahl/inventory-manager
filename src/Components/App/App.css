@@ -21,10 +21,11 @@ h1 {
 }
 
 nav {
-    display: flex;
     justify-content: space-around;
     align-items: center;
     border: 2px solid #fdc945;
+    display: flex;
+    flex-direction: column;
 }
 
 a {
@@ -49,6 +50,9 @@ main {
     text-align: center;
 }
 
+select {
+    background-color: white;
+}
 /* input */
 
 button {
@@ -73,6 +77,11 @@ table {
     border-collapse: collapse;
 }
 
+tr {
+    display: flex;
+    flex-direction: column;
+}
+
 th {
     background-color: black;
     color: #fdc945;
@@ -84,8 +93,47 @@ td {
     padding: 2px;
 }
 
+
+
 footer {
     margin: 20px;
     text-align: center;
     font-size: 0.8em;
+}
+
+@supports (display: grid){
+	@supports(grid-area: auto){
+        @media only screen and (min-width: 320px){
+            nav {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+            .productTable tr, .inventoryTable tr, .binTable tr, .orderTable tr, .cartTable tr {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                grid-template-areas:
+                "product product product product"
+                "edit edit delete delete";
+                border: 2px solid black;
+            }
+            .productTable tr td:nth-child(5), .productTable tr th:nth-child(5), .inventoryTable tr td:nth-child(5), .inventoryTable tr th:nth-child(5){
+                grid-area: edit;
+            }
+            .productTable tr td:nth-child(6), .productTable tr th:nth-child(6), .inventoryTable tr td:nth-child(6), .inventoryTable tr th:nth-child(6){
+                grid-area: delete;
+            }
+        }
+        @media only screen and (min-width: 846px){
+            nav {
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            }
+            tr {
+                border: none !important;
+            }
+            .productTable tr, .inventoryTable tr {
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+                grid-template-areas: "product product product product edit delete";
+            }
+        }
+    }
 }

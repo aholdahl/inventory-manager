@@ -139,7 +139,7 @@ class Orders extends Component {
                     <button title="Click to delete this Order" onClick={this.deleteOrder}>Delete Order</button>
                 </>
                 }
-                <table>
+                <table className="orderTable">
                     <thead>
                         <tr>
                             <th>Product</th>
